@@ -7,13 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-event.component.css']
 })
 export class CreateEventComponent implements OnInit {
-
+  isDirty: boolean = true;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  cancel(){
+  cancel() {
     this.router.navigate(['/events']);
   }
 
