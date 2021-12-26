@@ -13,7 +13,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { CreateEventComponent } from './events/create-event/create-event.component';
 import { Error404Component } from './error/404.component';
 import { EventslistresolverService } from './_resolvers/events-list-resolver.service';
-import { ProfileComponent } from './user/profile/profile.component';
 
 @NgModule({
   imports: [
@@ -29,8 +28,7 @@ import { ProfileComponent } from './user/profile/profile.component';
     NavbarComponent,
     EventDetailsComponent,
     CreateEventComponent,
-    Error404Component,
-    ProfileComponent
+    Error404Component
   ],
   providers:[EventService,EventslistresolverService],
   bootstrap: [EventsAppComponent]

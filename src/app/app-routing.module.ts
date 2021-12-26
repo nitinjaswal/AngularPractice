@@ -12,12 +12,18 @@ import { EventslistresolverService } from './_resolvers/events-list-resolver.ser
 const routes: Routes = [
   //Here we are defining routes to match the URL
   //if url is /events then call EventsListComponent
-  { path: 'events/new', component: CreateEventComponent, canDeactivate:[CreateEventDeActivatorGuard] },
-  { path: 'events', component: EventsListComponent, resolve:{events:EventslistresolverService} },
-  { path: 'events/:id', component: EventDetailsComponent, 
-    canActivate:[EventRouteActivatorGuard] },
+  { path: 'events/new', component: CreateEventComponent, canDeactivate: [CreateEventDeActivatorGuard] },
+  { path: 'events', component: EventsListComponent, resolve: { events: EventslistresolverService } },
+  {
+    path: 'events/:id', component: EventDetailsComponent,
+    canActivate: [EventRouteActivatorGuard]
+  },
   { path: '404', component: Error404Component },
-  { path: '', redirectTo: '/events', pathMatch: 'full' }
+  { path: '', redirectTo: '/events', pathMatch: 'full' },
+  {
+    path: 'user',
+    loadChildren: () => import('./_modules/user/user.module').then(m=>m.UserModule)
+  }
 ];
 
 @NgModule({
