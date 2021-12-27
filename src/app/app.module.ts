@@ -6,7 +6,8 @@ import {
   EventThumbnailComponent,
   EventDetailsComponent,
   CreateEventComponent,
-  EventService
+  EventService,
+  AuthService
 } from './events/index'
 
 import { EventsAppComponent } from './events-app.component';
@@ -16,6 +17,7 @@ import { SharedModule } from './_modules/shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { Error404Component } from './error/404.component';
 import { EventslistresolverService } from './_resolvers/events-list-resolver.service';
+//import { AuthService } from './_services';
 
 @NgModule({
   imports: [
@@ -31,9 +33,16 @@ import { EventslistresolverService } from './_resolvers/events-list-resolver.ser
     NavbarComponent,
     EventDetailsComponent,
     CreateEventComponent,
-    Error404Component
+    Error404Component,
+
   ],
-  providers: [EventService, EventslistresolverService],
+  providers: 
+  [
+    EventService,
+    EventslistresolverService,
+    AuthService
+  ],
+
   bootstrap: [EventsAppComponent]
 })
 export class AppModule { }
