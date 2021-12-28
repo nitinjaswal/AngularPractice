@@ -8,24 +8,30 @@ import { IEvent } from './index';
 export class EventService {
   constructor() { }
 
-  getEvents():Observable<IEvent[]> {
+  getEvents(): Observable<IEvent[]> {
     let subject = new Subject<IEvent[]>();
     setTimeout(() => { subject.next(EVENTS); subject.complete(); },
       2000)
     return subject
   }
 
-  getEvent(id: number):IEvent {
+  getEvent(id: number): IEvent {
     return EVENTS.find(event => event.id === id)
   }
 
-  saveEvent(event){
-    event.id=999
-    event.session=[]
+  saveEvent(event) {
+    event.id = 999
+    event.session = []
     EVENTS.push(event)
   }
+
+  updateEvent(event) {
+    let index = EVENTS.findIndex(x => x.id = event.id)
+    EVENTS[index] = event;
+  }
+  
 }
-const EVENTS:IEvent[] = [
+const EVENTS: IEvent[] = [
   {
     id: 1,
     name: 'Angular Connect',

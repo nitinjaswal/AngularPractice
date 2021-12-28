@@ -7,6 +7,7 @@ import {
   EventDetailsComponent,
   CreateEventComponent,
   CreatesessionComponent,
+  SessionListComponent,
   EventService,
   AuthService
 } from './events/index'
@@ -37,7 +38,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EventDetailsComponent,
     CreateEventComponent,
     Error404Component,
-    CreatesessionComponent
+    CreatesessionComponent,
+    SessionListComponent
   ],
   providers: 
   [
