@@ -6,6 +6,7 @@ import {
   EventThumbnailComponent,
   EventDetailsComponent,
   CreateEventComponent,
+  CreatesessionComponent,
   EventService,
   AuthService
 } from './events/index'
@@ -17,14 +18,16 @@ import { SharedModule } from './_modules/shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { Error404Component } from './error/404.component';
 import { EventslistresolverService } from './_resolvers/events-list-resolver.service';
-//import { AuthService } from './_services';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     EventsAppComponent,
@@ -34,7 +37,7 @@ import { EventslistresolverService } from './_resolvers/events-list-resolver.ser
     EventDetailsComponent,
     CreateEventComponent,
     Error404Component,
-
+    CreatesessionComponent
   ],
   providers: 
   [

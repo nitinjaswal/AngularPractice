@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import{
+import {
   EventsListComponent,
   EventDetailsComponent,
   CreateEventComponent,
   EventslistresolverService,
   EventRouteActivatorGuard,
-  CreateEventDeActivatorGuard
-
+  CreateEventDeActivatorGuard,
+  CreatesessionComponent
 } from './events/index'
 
 import { Error404Component } from './error/404.component';
@@ -21,11 +21,12 @@ const routes: Routes = [
     path: 'events/:id', component: EventDetailsComponent,
     canActivate: [EventRouteActivatorGuard]
   },
+  { path: 'events/session/new', component: CreatesessionComponent },
   { path: '404', component: Error404Component },
   { path: '', redirectTo: '/events', pathMatch: 'full' },
   {
     path: 'user',
-    loadChildren: () => import('./_modules/user/user.module').then(m=>m.UserModule)
+    loadChildren: () => import('./_modules/user/user.module').then(m => m.UserModule)
   }
 ];
 
