@@ -10,6 +10,9 @@ import { IEvent, ISession } from '..';
 export class EventDetailsComponent implements OnInit {
   event:IEvent;
   addMode:boolean;
+  filterBy:string='all';
+  sortBy:string=''
+
   constructor(private eventService:EventService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
