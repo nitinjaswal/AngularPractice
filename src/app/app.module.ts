@@ -21,6 +21,7 @@ import { Error404Component } from './error/404.component';
 import { EventslistresolverService } from './_resolvers/events-list-resolver.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CollapsibleWellComponent } from './collapsible-well/collapsible-well.component';
+import { DurationPipe } from './_pipe/duration.pipe';
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { CollapsibleWellComponent } from './collapsible-well/collapsible-well.co
     Error404Component,
     CreatesessionComponent,
     SessionListComponent,
-    CollapsibleWellComponent
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   providers: 
   [
