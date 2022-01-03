@@ -9,8 +9,8 @@ import {
   CreatesessionComponent,
   SessionListComponent,
   EventService,
-  AuthService
-} from './events/index'
+  AuthService,
+} from './events/index';
 
 import { EventsAppComponent } from './events-app.component';
 import { NavbarComponent } from './nav/navbar/navbar.component';
@@ -22,16 +22,13 @@ import { EventslistresolverService } from './_resolvers/events-list-resolver.ser
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CollapsibleWellComponent } from './collapsible-well/collapsible-well.component';
 import { DurationPipe } from './_pipe/duration.pipe';
+import { JQ_TOKEN } from './_services/jQuery.service';
+import { SimpleModalComponent } from './common/simple-modal/simple-modal.component';
+import { ModalTriggerDirective } from './_directives/modal-trigger.directive';
+
+let jQuery = window['$'];
 
 @NgModule({
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    SharedModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
   declarations: [
     EventsAppComponent,
     EventsListComponent,
@@ -43,15 +40,25 @@ import { DurationPipe } from './_pipe/duration.pipe';
     CreatesessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective,
   ],
-  providers: 
-  [
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  providers: [
     EventService,
+    { provide: JQ_TOKEN, useValue: jQuery },
     EventslistresolverService,
-    AuthService
+    AuthService,
   ],
 
-  bootstrap: [EventsAppComponent]
+  bootstrap: [EventsAppComponent],
 })
-export class AppModule { }
+export class AppModule {}
