@@ -16,7 +16,7 @@
         </li>
         <li>
           <a
-            [routerLink]="['events/new']"
+            [routerLink]="['/events/new']"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             >Create Event</a
@@ -37,14 +37,11 @@
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">
           <li>
-            <a
-              *ngIf="!authService.isAuthenticated()"
-              [routerLink]="['user/login']"
-              >Login</a
+            <a  *ngIf="!authService.isAuthenticated()" routerLink="/user/login">Login</a
             >
             <a
               *ngIf="authService.isAuthenticated()"
-              [routerLink]="['user/profile']"
+              routerLink="/user/profile"
               >Welcome {{ authService.currentuser.firstName }}</a
             >
           </li>

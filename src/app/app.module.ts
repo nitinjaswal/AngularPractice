@@ -25,6 +25,9 @@ import { DurationPipe } from './_pipe/duration.pipe';
 import { JQ_TOKEN } from './_services/jQuery.service';
 import { SimpleModalComponent } from './common/simple-modal/simple-modal.component';
 import { ModalTriggerDirective } from './_directives/modal-trigger.directive';
+import { UpvoteComponent } from './upvote/upvote.component';
+import { VoterService } from './_services/voter.service';
+import { LocationValidatorDirective  } from './_directives/location-validator.directive';
 
 let jQuery = window['$'];
 
@@ -43,6 +46,8 @@ let jQuery = window['$'];
     DurationPipe,
     SimpleModalComponent,
     ModalTriggerDirective,
+    UpvoteComponent,
+    LocationValidatorDirective,
   ],
   imports: [
     AppRoutingModule,
@@ -55,6 +60,7 @@ let jQuery = window['$'];
   providers: [
     EventService,
     AuthService,
+    VoterService,
     { provide: JQ_TOKEN, useValue: jQuery }
   ],
 
