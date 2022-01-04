@@ -54,9 +54,8 @@ let jQuery = window['$'];
   ],
   providers: [
     EventService,
-    { provide: JQ_TOKEN, useValue: jQuery },
-    EventslistresolverService,
     AuthService,
+    { provide: JQ_TOKEN, useValue: jQuery }
   ],
 
   bootstrap: [EventsAppComponent],
