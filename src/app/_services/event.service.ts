@@ -1,35 +1,41 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, Output, EventEmitter } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 import { IEvent, ISession } from './index';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EventService {
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
 
-  getEvents(): Observable<IEvent[]> {
-    let subject = new Subject<IEvent[]>();
-    setTimeout(() => {
-      subject.next(EVENTS);
-      subject.complete();
-    }, 2000);
-    return subject;
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.log(error);
+      return of(result as T);
+    };
   }
 
-  getEvent(id: number): IEvent {
-    return EVENTS.find((event) => event.id === id);
+  getEvents(): Observable<IEvent[]> {
+    return this.httpClient
+      .get<IEvent[]>('/api/events')
+      .pipe(catchError(this.handleError<IEvent[]>('getEvents', [])));
+  }
+
+  getEvent(id: number): Observable<IEvent> {
+    return this.httpClient
+      .get<IEvent>('/api/events/' + id)
+      .pipe(catchError(this.handleError<IEvent>('getEvent')));
   }
 
   saveEvent(event) {
-    event.id = 999;
-    event.session = [];
-    EVENTS.push(event);
-  }
-
-  updateEvent(event) {
-    let index = EVENTS.findIndex((x) => (x.id = event.id));
-    EVENTS[index] = event;
+    const options = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
+    return this.httpClient
+      .post('/api/events', event, options)
+      .pipe(catchError(this.handleError<IEvent>('saveEvent')));
   }
 
   searchSessions(searchTerm: string) {

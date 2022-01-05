@@ -5,9 +5,9 @@ import {
   EventDetailsComponent,
   CreateEventComponent,
   EventslistresolverService,
-  EventRouteActivatorGuard,
   CreateEventDeActivatorGuard,
-  CreatesessionComponent
+  CreatesessionComponent,
+  EventResolver
 } from './events/index'
 
 import { Error404Component } from './error/404.component';
@@ -17,10 +17,7 @@ const routes: Routes = [
   //if url is /events then call EventsListComponent
   { path: 'events/new', component: CreateEventComponent, canDeactivate: [CreateEventDeActivatorGuard] },
   { path: 'events', component: EventsListComponent, resolve: { events: EventslistresolverService } },
-  {
-    path: 'events/:id', component: EventDetailsComponent,
-    canActivate: [EventRouteActivatorGuard]
-  },
+  { path: 'events/:id', component: EventDetailsComponent ,resolve:{event:EventResolver}},
   { path: 'events/session/new', component: CreatesessionComponent },
   { path: '404', component: Error404Component },
   { path: '', redirectTo: '/events', pathMatch: 'full' },

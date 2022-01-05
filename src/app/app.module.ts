@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import {
   EventsListComponent,
   EventThumbnailComponent,
@@ -10,6 +10,7 @@ import {
   SessionListComponent,
   EventService,
   AuthService,
+  EventResolver
 } from './events/index';
 
 import { EventsAppComponent } from './events-app.component';
@@ -28,6 +29,7 @@ import { ModalTriggerDirective } from './_directives/modal-trigger.directive';
 import { UpvoteComponent } from './upvote/upvote.component';
 import { VoterService } from './_services/voter.service';
 import { LocationValidatorDirective  } from './_directives/location-validator.directive';
+
 
 let jQuery = window['$'];
 
@@ -56,6 +58,7 @@ let jQuery = window['$'];
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     EventService,
