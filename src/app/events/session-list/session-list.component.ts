@@ -11,6 +11,7 @@ export class SessionListComponent {
   @Input() sessions: ISession[];
   @Input() filterBy: string;
   @Input() sortBy: string;
+  @Input() eventId: number;
   visibleSessions: ISession[] = [];
 
   constructor(public auth: AuthService, private voterService: VoterService) {}
@@ -26,9 +27,17 @@ export class SessionListComponent {
 
   toggleVote(session: ISession) {
     if (this.userHasVoted(session)) {
-      this.voterService.deleteVoter(session, this.auth.currentuser.userName);
+      this.voterService.deleteVoter(
+        this.eventId,
+        session,
+        this.auth.currentuser.userName
+      );
     } else {
-      this.voterService.addVoter(session, this.auth.currentuser.userName);
+      this.voterService.addVoter(
+        this.eventId,
+        session,
+        this.auth.currentuser.userName
+      );
     }
     if (this.sortBy === 'votes') {
       this.visibleSessions.sort(sortByVotesDesc);

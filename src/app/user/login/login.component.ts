@@ -5,26 +5,30 @@ import { AuthService } from 'src/app/_services';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  userName
-  password
-  mouseoverLogin
-  constructor(private authService: AuthService, private router:Router) {
+  userName;
+  password;
+  mouseoverLogin;
+  loginInvalid = false;
+  constructor(private authService: AuthService, private router: Router) {}
 
-  }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   login(formValues) {
-    this.authService.loginUser(formValues.userName, formValues.password);
-    this.router.navigate(['events'])
+    this.authService
+      .loginUser(formValues.userName, formValues.password)
+      .subscribe((resp) => {
+        if (!resp) {
+          this.loginInvalid = true;
+        } else {
+          this.router.navigate(['events']);
+        }
+      });
   }
 
-  cancel(){
-    this.router.navigate(['events'])
+  cancel() {
+    this.router.navigate(['events']);
   }
-
 }
