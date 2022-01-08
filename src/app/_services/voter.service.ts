@@ -10,24 +10,24 @@ import { ISession } from '.';
 export class VoterService {
   constructor(private httpClient: HttpClient) {}
 
-  deleteVoter(eventId:number,session: ISession, voterName: string) {
+  deleteVoter(eventId: number, session: ISession, voterName: string) {
     session.voters = session.voters.filter((voter) => voter !== voterName);
 
     const url = `/api/events/${eventId}/sessions/${session.id}/voters/${voterName}`;
-    this.httpClient.delete(url)
-    .pipe(catchError(this.handleError('deleteVoter')))
-    .subscribe();
+    this.httpClient
+      .delete(url)
+      .pipe(catchError(this.handleError('deleteVoter')))
+      .subscribe();
   }
 
   addVoter(eventId: number, session: ISession, voterName: string) {
     session.voters.push(voterName);
 
     const options = {
-      header: new HttpHeaders({ 'Content-Type': '/application/json' }),
+      headers: new HttpHeaders({ 'Content-Type': '/application/json' }),
     };
     const url = `/api/events/${eventId}/sessions/${session.id}/voters/${voterName}`;
-    this.httpClient
-      .post(url, options)
+    return this.httpClient.post(url,{}, options)
       .pipe(catchError(this.handleError('addVoter')))
       .subscribe();
   }
