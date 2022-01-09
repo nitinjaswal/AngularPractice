@@ -37,7 +37,6 @@ describe('VoterService', () => {
     it('should call http.post with the right url', () => {
       const session = { id: 6, voters: ['john'] };
       mockHttp.post.and.returnValue(of(false));
-
       voterService.addVoter(3, <ISession>session, 'joe');
 
       expect(mockHttp.post).toHaveBeenCalledWith(
@@ -46,5 +45,21 @@ describe('VoterService', () => {
         jasmine.any(Object)
       );
     });
+  });
+
+  describe('userHasVoted', () => {
+
+    it('Check if user has voted', () => {
+      const session = { id: 6, voters: ['john'] };
+      let result = voterService.userHasVoted(<ISession>session, 'john');
+      expect(result).toBe(true);
+    });
+
+    it('Check if user has not voted', () => {
+      const session = { id: 6, voters: ['john'] };
+      let result = voterService.userHasVoted(<ISession>session, 'rock');
+      expect(result).toBe(false);
+    });
+    
   });
 });

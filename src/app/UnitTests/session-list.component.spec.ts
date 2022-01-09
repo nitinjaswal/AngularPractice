@@ -29,6 +29,7 @@ describe('SessionListComponent', () => {
           { name: 'session 3', level: 'intermediate' },
           { name: 'session 2', level: 'beginner' },
         ];
+        
         component.filterBy = 'all';
         component.sortBy = 'name';
         component.eventId = 3;
