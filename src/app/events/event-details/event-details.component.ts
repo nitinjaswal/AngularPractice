@@ -10,8 +10,8 @@ import { IEvent, ISession } from '..';
 export class EventDetailsComponent implements OnInit {
   event: any;
   addMode: boolean;
-  filterBy: string = 'all';
-  sortBy: string = '';
+  filterBy = 'all';
+  sortBy = '';
 
   constructor(
     private eventService: EventService,

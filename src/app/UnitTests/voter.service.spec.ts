@@ -1,6 +1,6 @@
 import { VoterService } from '../_services/voter.service';
 import { ISession } from '../_services';
-import { Observable, of } from 'rxjs';
+import {  of } from 'rxjs';
 
 describe('VoterService', () => {
   let voterService: VoterService, mockHttp;
@@ -13,7 +13,7 @@ describe('VoterService', () => {
 
   describe('deleteVoter', () => {
     it('should remove the voter from the list of voters', () => {
-      var session = { id: 6, voters: ['joe', 'john'] };
+      const session = { id: 6, voters: ['joe', 'john'] };
       mockHttp.delete.and.returnValue(of(false));
       voterService.deleteVoter(3, <ISession>session, 'joe');
 
@@ -22,7 +22,7 @@ describe('VoterService', () => {
     });
 
     it('should call http.delete with the right URL', () => {
-      var session = { id: 6, voters: ['joe', 'john'] };
+      const session = { id: 6, voters: ['joe', 'john'] };
       mockHttp.delete.and.returnValue(of(false));
 
       voterService.deleteVoter(3, <ISession>session, 'joe');
@@ -51,13 +51,13 @@ describe('VoterService', () => {
 
     it('Check if user has voted', () => {
       const session = { id: 6, voters: ['john'] };
-      let result = voterService.userHasVoted(<ISession>session, 'john');
+      const result = voterService.userHasVoted(<ISession>session, 'john');
       expect(result).toBe(true);
     });
 
     it('Check if user has not voted', () => {
       const session = { id: 6, voters: ['john'] };
-      let result = voterService.userHasVoted(<ISession>session, 'rock');
+      const result = voterService.userHasVoted(<ISession>session, 'rock');
       expect(result).toBe(false);
     });
     

@@ -5,7 +5,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
   templateUrl: './upvote.component.html',
   styleUrls: ['./upvote.component.css'],
 })
-export class UpvoteComponent implements OnInit {
+export class UpvoteComponent {
   @Input() count: number;
   
   @Input() set voted(val) {
@@ -15,11 +15,6 @@ export class UpvoteComponent implements OnInit {
 
   iconColor: string;
   @Output() vote = new EventEmitter();
-
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   onClick() {
     this.vote.emit({});

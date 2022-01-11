@@ -7,14 +7,12 @@ import { AuthService } from 'src/app/_services';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent  {
   userName;
   password;
   mouseoverLogin;
   loginInvalid = false;
   constructor(private authService: AuthService, private router: Router) {}
-
-  ngOnInit(): void {}
 
   login(formValues) {
     this.authService

@@ -9,8 +9,7 @@ import {
   CreatesessionComponent,
   SessionListComponent,
   EventService,
-  AuthService,
-  EventResolver
+  AuthService
 } from './events/index';
 
 import { EventsAppComponent } from './events-app.component';
@@ -19,7 +18,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './_modules/shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { Error404Component } from './error/404.component';
-import { EventslistresolverService } from './_resolvers/events-list-resolver.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CollapsibleWellComponent } from './collapsible-well/collapsible-well.component';
 import { DurationPipe } from './_pipe/duration.pipe';
@@ -31,7 +29,7 @@ import { VoterService } from './_services/voter.service';
 import { LocationValidatorDirective  } from './_directives/location-validator.directive';
 
 
-let jQuery = window['$'];
+const jQuery = window['$'];
 
 @NgModule({
   declarations: [
