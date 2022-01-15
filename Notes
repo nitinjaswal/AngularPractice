@@ -1,0 +1,7 @@
+1)Setting up environment
+-Install git for windows:https://git-scm.com/download/win
+-Install node
+
+2)Angular CLI
+-npm install -g @angular/cli
+-ng new "appname"
