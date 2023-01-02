@@ -1,7 +1,7 @@
-import { FormControl } from "@angular/forms";
+import { UntypedFormControl } from "@angular/forms";
 
 export  function restrictedWords(words) {
-    return (control: FormControl): { [key: string]: any } => {
+    return (control: UntypedFormControl): { [key: string]: any } => {
       if (!words) return null;
 
       const invalidWords = words.map(w => control.value.includes(w) ? w : null).filter(w => w != null)

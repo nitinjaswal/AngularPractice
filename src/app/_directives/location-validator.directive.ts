@@ -1,5 +1,5 @@
 import { Directive } from '@angular/core';
-import { AbstractControl, FormGroup, NG_VALIDATORS, ValidationErrors, Validator } from '@angular/forms';
+import { AbstractControl, UntypedFormGroup, NG_VALIDATORS, ValidationErrors, Validator } from '@angular/forms';
 
 @Directive({
   selector: '[appLocationValidator]',
@@ -9,12 +9,12 @@ export class LocationValidatorDirective implements Validator {
 
   constructor() { }
 
-  validate(formGroup: FormGroup): {[key: string]: any} {
+  validate(formGroup: UntypedFormGroup): {[key: string]: any} {
    
     const addressControl = formGroup.controls['address'];
     const cityControl = formGroup.controls['city'];
     const countryControl = formGroup.controls['country'];
-    const onlineUrlControl = (<FormGroup>formGroup.root).controls['onlineUrl'];
+    const onlineUrlControl = (<UntypedFormGroup>formGroup.root).controls['onlineUrl'];
 
     if((addressControl && addressControl.value  && cityControl && cityControl.value && 
       countryControl && countryControl.value) ||

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/_services';
@@ -10,20 +10,20 @@ import { AuthService } from 'src/app/_services';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  profileForm: FormGroup;
-  private firstName: FormControl;
-  private lastName: FormControl;
+  profileForm: UntypedFormGroup;
+  private firstName: UntypedFormControl;
+  private lastName: UntypedFormControl;
 
   constructor(private authService: AuthService, private router: Router,
     private toastr: ToastrService) { }
 
   ngOnInit() {
-    this.firstName = new FormControl
+    this.firstName = new UntypedFormControl
       (this.authService.currentuser.firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')])
-    this.lastName = new FormControl(this.authService.currentuser.lastName,
+    this.lastName = new UntypedFormControl(this.authService.currentuser.lastName,
       Validators.required)
 
-    this.profileForm = new FormGroup({
+    this.profileForm = new UntypedFormGroup({
       firstName: this.firstName,
       lastName: this.lastName
     })
